@@ -42,7 +42,18 @@ fetch('./librat.json')
             console.log(bruh)
         }
 
+        const searchInput = document.querySelector('#search');
+        searchInput.addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            const bookContainers = document.querySelectorAll('.bookContainer');
+            bookContainers.forEach(bookContainer => {
+                const bookTitle = bookContainer.querySelector('.bookTitle').innerText;
+                if (bookTitle.toLowerCase().includes(searchTerm)) {
+                    bookContainer.style.display = 'block';
+                } else {
+                    bookContainer.style.display = 'none';
+                }
+            });
+        });
     })
     .catch(error => console.log(error));
-
-
